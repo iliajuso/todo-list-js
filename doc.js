@@ -3,7 +3,7 @@ const addButton = document.querySelector("#add-btn")
 const taskList = document.querySelector("ul")
 const deleteDoneButton = document.querySelector("#del-done-btn");
 const deleteAllButton = document.querySelector("#del-all-btn");
-const USER_ID = 237
+const USER_ID = 296
 // Create an empty array to store tasks
 let arrTask = []
 
@@ -19,7 +19,7 @@ function renderTasks() {
 
     // find the element to display the text of the task
     const taskText = document.createElement("label")
-    taskText.innerText = task.text
+    taskText.innerText = task.name
      
 // find the element to display the task checkbox
     const taskCheckbox = document.createElement("input")
@@ -35,6 +35,7 @@ taskCheckbox.addEventListener('change', function() {
     taskText.style.textDecoration = "";
   }
 });
+    
 
     // find the button to delete the task
     const taskDeleteButton = document.createElement("button")
@@ -50,7 +51,6 @@ taskCheckbox.addEventListener('change', function() {
     newTask.appendChild(taskDeleteButton)
     taskList.appendChild(newTask)
   })
-
 }
 addButton.addEventListener('click', addTask);
 
@@ -75,18 +75,21 @@ function addTask() {
     body : JSON.stringify(newTask)
   })
   .then(response => response.json())
-  .then(data => {
+    .then(data => {
+      console.log(data)
+      console.log(data.id)
   arrTask.push(data);
   inputValue.value = '';
 
-    renderTasks();
+    renderTasks(data);
   })
   .catch(error => console.error(error));
 }
 
+
 // Function to delete a task from the arrTask array
 function deleteTask(id) {
-  fetch("http://24api.ru/rest-todo/228", {
+  fetch("http://24api.ru/rest-todo/183", {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json'
