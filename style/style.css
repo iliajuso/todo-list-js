@@ -45,6 +45,10 @@ button {
   border: none;
   border-radius: 0.4rem;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #FFFFFF;
 }
 
 #add-btn {
@@ -58,37 +62,41 @@ hr {
   margin: 1.3rem 0 1.5rem;
 }
 
-#done {
-  width: 1rem;
-  height: 1rem;
-}
-
 label {
   display: inline-block;
   width: 18.6rem;
   height: 0.88rem;
   border-radius: 0.1rem;
-  background-color: #e7e7e7;
   padding: 0.1rem 0.3rem 0.2rem;
-  font-size: 1rem;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #54595E;
 }
 
 #del-btn {
-  font-size: 0.99rem;
+  font-size: 16px;
   background: transparent;
   border: none;
 }
 
 #del-done-btn {
   width: 10rem;
-  background: #DC3545;
+  background: #6C757D;
 }
 
 #del-all-btn {
   width: 7rem;
-  background: #6C757D;
+  background: #DC3545;
 }
 
 li {
   list-style-type: none;
+}
+
+.del__btn {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }/*# sourceMappingURL=style.css.map */

@@ -6,7 +6,6 @@ const deleteAllButton = document.querySelector("#del-all-btn");
 const USER_ID = 296
 // Create an empty array to store tasks
 let arrTask = []
-
 // Function that draws tasks
 function renderTasks() {
   taskList.innerHTML = ""
@@ -27,20 +26,21 @@ function renderTasks() {
     taskCheckbox.setAttribute("name", "todo")
     taskCheckbox.setAttribute("id", "done")
     taskCheckbox.checked = task.checked
-// add an event listener to the checkbox to toggle the text decoration
+ // add an event listener to the checkbox to toggle the text decoration
 taskCheckbox.addEventListener('change', function() {
   if (taskCheckbox.checked) {
-    taskText.style.textDecoration = "line-through";
-  } else {
+    taskText.style.textDecoration = "line-through"
+    } else {
     taskText.style.textDecoration = "";
-  }
+   }
 });
     
 
     // find the button to delete the task
     const taskDeleteButton = document.createElement("button")
     taskDeleteButton.innerText = "❌"
-
+    taskDeleteButton.style.backgroundColor = "#FFFFFF"
+    taskDeleteButton.style.marginLeft = "65px"
     // Add an event handler to the task delete button
     taskDeleteButton.addEventListener('click', function() {
       deleteTask(task.id);
@@ -51,10 +51,13 @@ taskCheckbox.addEventListener('change', function() {
     newTask.appendChild(taskDeleteButton)
     taskList.appendChild(newTask)
   })
+  
 }
+
 addButton.addEventListener('click', addTask);
 
-function addTask() {
+function addTask(event) {
+  event.preventDefault();
   const newTaskText = inputValue.value.trim();
   if (!newTaskText) return;
 
@@ -80,8 +83,7 @@ function addTask() {
       console.log(data.id)
   arrTask.push(data);
   inputValue.value = '';
-
-    renderTasks(data);
+renderTasks();
   })
   .catch(error => console.error(error));
 }
@@ -89,7 +91,7 @@ function addTask() {
 
 // Function to delete a task from the arrTask array
 function deleteTask(id) {
-  fetch("http://24api.ru/rest-todo/183", {
+  fetch(`http://24api.ru/rest-todo/${id}`, {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json'
