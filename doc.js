@@ -101,6 +101,7 @@ function deleteTask(id) {
     if (response.ok) {
       // If the deletion is successful, remove the task from the local array and render all tasks
       arrTask = arrTask.filter(task => task.id !== id);
+      console.log(arrTask)
       renderTasks();
     } 
   })
@@ -111,7 +112,6 @@ function deleteCompletedTasks() {
   arrTask = arrTask.filter(task => !task.checked);
   renderTasks();
 }
-
 // Function to delete all tasks
 function deleteAllTasks() {
 arrTask = [];
